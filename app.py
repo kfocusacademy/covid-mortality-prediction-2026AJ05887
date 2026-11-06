@@ -17,27 +17,44 @@ st.write(
     "COVID-19 mortality prediction models."
 )
 
-# Dataset upload
-uploaded_file = st.file_uploader(
-    "Upload your COVID-19 dataset",
-    type=["csv"]
-)
+# Dataset selection
+st.subheader("Dataset Selection")
 
-if uploaded_file is not None:
-    st.success("Dataset uploaded successfully!")
+dataset_option = st.radio(
+    "Choose your dataset source:",
+    ["Upload CSV", "Use default test_data.csv"],
+    horizontal=True
+)
+uploaded_file = None
+df = None
+
+if dataset_option == "Upload CSV":
+
+    uploaded_file = st.file_uploader(
+        "Upload your COVID-19 dataset",
+        type=["csv"]
+    )
+
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file)
+        st.success("Dataset uploaded successfully!")
+
+else:
+    df = pd.read_csv("covid_test_data.csv")
+    st.success("Default test dataset loaded successfully!")
+
+if df is not None:
     model_files = {
     "Logistic": "logistic_regression.joblib",
     "DecisionTree": "decision_tree.joblib",
     "SVM": "svm.joblib",
     "KNN": "knn.joblib",
     "NaiveBayes": "naivebayes.joblib"
-}
-    df = pd.read_csv(uploaded_file)
-
+    }
+    
     # test_data.csv already contains the encoded target
     test_y = df["DATE_DIED"]
     test_x = df.drop(columns=["DATE_DIED"])
-
     st.write("Test dataset shape:", test_x.shape)
 
     st.write("Dataset preparation completed!")
