@@ -1,4 +1,10 @@
-1.Project Details
+1.	GIT Hub Repository:
+ https://github.com/kfocusacademy/covid-mortality-prediction-2026AJ05887
+
+2.	Live Streamlit App Link
+ https://covid-mortality-prediction-2026aj05887-enyihtxtml9sentxjawega.streamlit.app/
+
+3.Project Details
 ----------------
 COVID-19 Patient Mortality Prediction
 
@@ -11,7 +17,7 @@ The objective is to develop Machine Learning models that classify COVID-19 patie
 
 2.Machine Learning Models
 ------------------------
-The following five classification algorithms are implemented:
+The following five classification algorithms are implemented: using 2000+ Data pointers and saved the model. 
 
 Logistic Regression
 Decision Tree
@@ -51,8 +57,34 @@ The Models are evaluated using the below specific metrics as per the assignment.
 5. F1 Score 
 6. Matthews Correlation Coefficient (MCC Score)
 
+	Model			Accuracy	F1 Score	Precision	Recall		AUC		MCC
+-----------------------------------------------------------------------------------------------------------------------
+0	Logistic_FineTuned	0.885		0.9265131	0.889570	0.966666 	0.934383	0.676528
+1	DecisionTree_FineTuned	0.8775		0.9205834	0.895899	0.946666	0.903583	0.658479
+2	SVM_FineTuned		0.9025		0.9381933	0.894259	0.986666	0.906516	0.729682
+3	KNN_FineTuned		0.8825		0.9245585	0.891640	0.96		0.94155		0.669952
+4	NaiveBayes_FineTuned	0.2675		0.0456026	1		0.023333	0.903616	0.077053
+
+Observations:
+
+ML Model Name	    Observation about model performance
+-------------------------------------------------------------
+SVM	                Best overall classification performance among all other models      
+                    (90%   Accuracy and 72% MCC). Even in confusion matrix, only 4 out of 300 predicted incorrect for “Died” category. All other models more than 10. 
+KNN	                Strong alternative with higher precision and reported AUC.
+
+Logistic Regression	Strong performance and good interpretability
+
+Decision Tree	    Competitive, but slightly behind compared to other 3 models.
+
+Naive Bayes	        Poor default classification performance  compared to other models
+
+Overall, Winner     SVM performed the best model in terms of both mortality and
+for your dataset?   recovered, true positive rate is better.
+                    Naïve Basic worst performance model even after hyper tuned parameters. 
+
 And additional evaluation outputs:
- - Confusion Matrix
+ - Confusion Matrix - Available in 
  - Classification Report
 
 5. Project Structure
@@ -77,9 +109,9 @@ COVID-19-Mortality-Prediction/
 6. Installation & Execution
 -----------------------------
 step1: Clone the git repository 
-        git clone <YOUR_GITHUB_REPOSITORY_URL>
+        git clone   https://github.com/kfocusacademy/covid-mortality-prediction-2026AJ05887
 
-Step2: cd <project_folder>
+Step2: cd  covid-mortality-prediction-2026AJ05887
 
 step3: Install dependencies
 	pip install -r requirements.txt
